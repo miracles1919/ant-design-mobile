@@ -11,6 +11,13 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    // environment: 'happydom',
     setupFiles: './src/tests/setup.ts',
+    coverage: {
+      include: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}'],
+      exclude: ['**/demos/**', '**/tests/**', '**/.umi/**'],
+    },
+    minThreads: 10,
+    maxThreads: 20,
   },
 })
