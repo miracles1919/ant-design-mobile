@@ -15,7 +15,7 @@ describe('CheckList', () => {
   })
 
   test('renders with multiple', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { getByTestId } = render(
       <CheckList multiple onChange={onChange}>
         <CheckList.Item value='A' data-testid='A'>
@@ -37,7 +37,7 @@ describe('CheckList', () => {
   })
 
   test('renders with readonly', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
     const { container } = render(
       <CheckList defaultValue={['B']}>
         <CheckList.Item value='A' onClick={onClick}>
@@ -51,7 +51,7 @@ describe('CheckList', () => {
   })
 
   test('renders with disabled', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
     const { container } = render(
       <CheckList>
         <CheckList.Item value='A' onClick={onClick}>

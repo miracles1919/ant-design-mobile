@@ -53,7 +53,7 @@ describe('JumboTabs', () => {
   })
 
   test('disabled tab', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { getByText } = render(
       <JumboTabs onChange={onChange}>
         <JumboTabs.Tab title='fruits' description='description' key='fruits' />

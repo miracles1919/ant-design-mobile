@@ -24,7 +24,7 @@ describe('Radio', () => {
   })
 
   test('onChange should be call once when the selected item is clicked multiple times', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(
       <Radio value='1' onChange={onChange}>
         1
@@ -68,7 +68,7 @@ describe('Radio.Group', () => {
 
   test('value onChange', () => {
     let checked = 'apple'
-    const onChange = jest.fn(value => {
+    const onChange = vi.fn(value => {
       checked = value
     })
 
@@ -118,7 +118,7 @@ describe('Radio.Group', () => {
   })
 
   test('onChange should be call once when the selected item is clicked multiple times', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(
       <Radio.Group onChange={onChange}>
         <Radio value='1'>1</Radio>

@@ -42,14 +42,14 @@ describe('Modal', () => {
   })
 
   test('afterShow should be called', async () => {
-    const afterShow = jest.fn()
+    const afterShow = vi.fn()
     render(<ModalAlert afterShow={afterShow} />)
     fireEvent.click(screen.getByRole('button', { name: 'btn' }))
     await waitFor(() => expect(afterShow).toBeCalled())
   })
 
   test('onConfirm should be called', async () => {
-    const onConfirm = jest.fn()
+    const onConfirm = vi.fn()
     render(<ModalAlert onConfirm={onConfirm} />)
     fireEvent.click(screen.getByRole('button', { name: 'btn' }))
     const modal = $$(`.${classPrefix}`)[0]
@@ -59,8 +59,8 @@ describe('Modal', () => {
   })
 
   test('close on mask click', async () => {
-    const onClose = jest.fn()
-    const afterClose = jest.fn()
+    const onClose = vi.fn()
+    const afterClose = vi.fn()
     render(
       <ModalAlert closeOnMaskClick onClose={onClose} afterClose={afterClose} />
     )
@@ -99,7 +99,7 @@ describe('Modal', () => {
   })
 
   test('wait for alert to complete', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     render(
       <button
         onClick={async () => {
@@ -121,7 +121,7 @@ describe('Modal', () => {
   })
 
   test('wait for confirm to complete', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const Confirm = () => (
       <button
         onClick={async () => {
@@ -214,7 +214,7 @@ describe('Modal', () => {
 
   test('action onClick', async () => {
     const promise = Promise.resolve()
-    const onClick = jest.fn(() => promise)
+    const onClick = vi.fn(() => promise)
     const actions = [
       {
         key: 'ok',

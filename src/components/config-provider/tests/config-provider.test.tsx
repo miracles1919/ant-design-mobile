@@ -45,7 +45,7 @@ const locales = [
 ]
 
 describe('ConfigProvider', () => {
-  URL.revokeObjectURL = jest.fn(() => '')
+  URL.revokeObjectURL = vi.fn(() => '')
 
   beforeAll(() => {
     MockDate.set(new Date('2022-03-22'))

@@ -16,6 +16,7 @@
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| visible | 显示隐藏 | `boolean` | `false` |
 | actions | 面板选项列表 | `Action[]` | `[]` |
 | afterClose | 完全关闭后触发 | `() => void` | - |
 | cancelText | 取消按钮文字，如果设置为空则不显示取消按钮 | `ReactNode` | - |
@@ -31,7 +32,6 @@
 | popupClassName | `ActionSheet` 弹出层类名 | `string` | - |
 | popupStyle | `ActionSheet` 弹出层样式 | `React.CSSProperties` | - |
 | safeArea | 是否开启安全区适配 | `boolean` | `true` |
-| visible | 显示隐藏 | `boolean` | `false` |
 
 ### Action
 

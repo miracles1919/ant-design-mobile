@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Tag renders with color 1`] = `
+exports[`Tag > renders with color 1`] = `
 <div>
   <span
     class="adm-tag"
@@ -17,7 +17,7 @@ exports[`Tag renders with color 1`] = `
 </div>
 `;
 
-exports[`Tag renders with fill 1`] = `
+exports[`Tag > renders with fill 1`] = `
 <div>
   <span
     class="adm-tag"

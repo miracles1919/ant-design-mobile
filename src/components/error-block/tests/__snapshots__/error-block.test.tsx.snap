@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ErrorBlock renders when image is ReactElement 1`] = `
+exports[`ErrorBlock > renders when image is ReactElement 1`] = `
 <div>
   <div
     class="adm-error-block"
@@ -33,7 +33,7 @@ exports[`ErrorBlock renders when image is ReactElement 1`] = `
 </div>
 `;
 
-exports[`ErrorBlock renders with customize props 1`] = `
+exports[`ErrorBlock > renders with customize props 1`] = `
 <div>
   <div
     class="adm-error-block"
@@ -81,7 +81,7 @@ exports[`ErrorBlock renders with customize props 1`] = `
 </div>
 `;
 
-exports[`ErrorBlock renders with empty statsu 1`] = `
+exports[`ErrorBlock > renders with empty statsu 1`] = `
 <div>
   <div
     class="adm-error-block"

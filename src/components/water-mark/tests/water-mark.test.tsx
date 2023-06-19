@@ -4,7 +4,7 @@ import WaterMark from '..'
 
 const classPrefix = `adm-water-mark`
 
-const mockSrcSet = jest.spyOn(Image.prototype, 'src', 'set')
+const mockSrcSet = vi.spyOn(Image.prototype, 'src', 'set')
 
 describe('WaterMark', () => {
   beforeAll(() => {
@@ -46,8 +46,8 @@ describe('WaterMark', () => {
   })
 
   test('throw error when Canvas is not supported', () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
-    const mockCanvasContext = jest.spyOn(
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    const mockCanvasContext = vi.spyOn(
       HTMLCanvasElement.prototype,
       'getContext'
     )

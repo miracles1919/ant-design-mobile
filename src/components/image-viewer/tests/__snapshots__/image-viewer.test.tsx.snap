@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ImageViewer.Multi calling ref.current.swipeTo before initialization 1`] = `
+exports[`ImageViewer.Multi > calling ref.current.swipeTo before initialization 1`] = `
 <div>
   <button
     class="adm-button adm-button-default adm-button-shape-default"
@@ -13,7 +13,7 @@ exports[`ImageViewer.Multi calling ref.current.swipeTo before initialization 1`]
 </div>
 `;
 
-exports[`ImageViewer.Multi calling ref.current.swipeTo before initialization 2`] = `
+exports[`ImageViewer.Multi > calling ref.current.swipeTo before initialization 2`] = `
 <div>
   <button
     class="adm-button adm-button-default adm-button-shape-default"

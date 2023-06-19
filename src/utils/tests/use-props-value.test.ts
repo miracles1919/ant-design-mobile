@@ -3,7 +3,7 @@ import { renderHook, act } from 'testing'
 
 describe('usePropsValue', () => {
   test('onChange should not call when next value not change in uncontrolled mode', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { result } = renderHook(() =>
       usePropsValue({
         value: undefined,
@@ -20,7 +20,7 @@ describe('usePropsValue', () => {
   })
 
   test('onChange should not call when next value not change in controlled mode', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { result } = renderHook(usePropsValue, {
       initialProps: { value: '1', defaultValue: '', onChange },
     })
@@ -30,7 +30,7 @@ describe('usePropsValue', () => {
   })
 
   test('onChange should call when `forceTrigger` is true', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { result } = renderHook(usePropsValue, {
       initialProps: { value: '1', defaultValue: '', onChange },
     })

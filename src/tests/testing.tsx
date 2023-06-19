@@ -116,7 +116,11 @@ export const actSleep = (time: number) => {
   return act(() => sleep(time))
 }
 
-export const mockDrag = (el: Element, options: any[]) => {
+export const mockDrag = async (
+  el: Element,
+  options: any[],
+  timeout?: number
+) => {
   const [downOptions, ...moveOptions] = options
   fireEvent.mouseDown(el, {
     buttons: 1,
@@ -127,6 +131,7 @@ export const mockDrag = (el: Element, options: any[]) => {
       buttons: 1,
       ...item,
     })
+    if (timeout) await sleep(timeout)
   }
   fireEvent.mouseUp(el)
 }

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Ellipsis direction end 1`] = `
+exports[`Ellipsis > direction end 1`] = `
 <div
   class="adm-ellipsis"
   data-testid="ellipsis"
@@ -10,7 +10,7 @@ exports[`Ellipsis direction end 1`] = `
 </div>
 `;
 
-exports[`Ellipsis direction middle 1`] = `
+exports[`Ellipsis > direction middle 1`] = `
 <div
   class="adm-ellipsis"
   data-testid="ellipsis"
@@ -21,7 +21,7 @@ exports[`Ellipsis direction middle 1`] = `
 </div>
 `;
 
-exports[`Ellipsis direction start 1`] = `
+exports[`Ellipsis > direction start 1`] = `
 <div
   class="adm-ellipsis"
   data-testid="ellipsis"
@@ -31,7 +31,7 @@ exports[`Ellipsis direction start 1`] = `
 </div>
 `;
 
-exports[`Ellipsis expand and collapse 1`] = `
+exports[`Ellipsis > expand and collapse 1`] = `
 <div
   class="adm-ellipsis"
   data-testid="ellipsis"
@@ -44,7 +44,7 @@ exports[`Ellipsis expand and collapse 1`] = `
 </div>
 `;
 
-exports[`Ellipsis expand and collapse 2`] = `
+exports[`Ellipsis > expand and collapse 2`] = `
 <div
   class="adm-ellipsis"
   data-testid="ellipsis"
@@ -57,7 +57,7 @@ exports[`Ellipsis expand and collapse 2`] = `
 </div>
 `;
 
-exports[`Ellipsis multi line 1`] = `
+exports[`Ellipsis > multi line 1`] = `
 <div
   class="adm-ellipsis"
   data-testid="ellipsis"

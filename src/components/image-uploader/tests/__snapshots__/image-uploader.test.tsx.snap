@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ImageUploader \`preview\` & \`onPreview\` prop 1`] = `
+exports[`ImageUploader > \`preview\` & \`onPreview\` prop 1`] = `
 <div>
   <div
     class="adm-image-uploader"
@@ -147,7 +147,7 @@ exports[`ImageUploader \`preview\` & \`onPreview\` prop 1`] = `
 </div>
 `;
 
-exports[`ImageUploader custom upload button 1`] = `
+exports[`ImageUploader > custom upload button 1`] = `
 <div>
   <div
     class="adm-image-uploader"
@@ -250,7 +250,7 @@ exports[`ImageUploader custom upload button 1`] = `
 </div>
 `;
 
-exports[`ImageUploader upload status 1`] = `
+exports[`ImageUploader > upload status 1`] = `
 <div>
   <div
     class="adm-image-uploader"

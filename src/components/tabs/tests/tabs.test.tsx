@@ -45,7 +45,7 @@ describe('Tabs', () => {
   })
 
   test('disabled tab', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { getByText } = render(
       <Tabs onChange={onChange}>
         <Tabs.Tab title='fruits' key='fruits' />

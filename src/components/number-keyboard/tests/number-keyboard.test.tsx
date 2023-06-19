@@ -25,14 +25,14 @@ describe('NumberKeyboard', () => {
   })
 
   test('onClose should be called by close button', () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
     render(<NumberKeyboard visible onClose={onClose} />)
     fireEvent.click(screen.getByTitle('CLOSE'))
     expect(onClose).toBeCalledTimes(1)
   })
 
   test('onInput should be work', () => {
-    const onInput = jest.fn()
+    const onInput = vi.fn()
     render(<NumberKeyboard visible onInput={onInput} />)
     const keys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     keys.forEach(key => {
@@ -43,8 +43,8 @@ describe('NumberKeyboard', () => {
   })
 
   test('renders with customKey', () => {
-    const onDelete = jest.fn()
-    const onInput = jest.fn()
+    const onDelete = vi.fn()
+    const onInput = vi.fn()
     render(
       <NumberKeyboard
         customKey='-'
@@ -62,9 +62,9 @@ describe('NumberKeyboard', () => {
   })
 
   test('renders with confirmText', async () => {
-    const onConfirm = jest.fn()
-    const onClose = jest.fn()
-    const onDelete = jest.fn()
+    const onConfirm = vi.fn()
+    const onClose = vi.fn()
+    const onDelete = vi.fn()
     render(
       <NumberKeyboard
         visible
@@ -123,20 +123,20 @@ describe('NumberKeyboard', () => {
   })
 
   test('onDelete will be called when backspace press long time', () => {
-    jest.useFakeTimers()
-    const onDelete = jest.fn()
+    vi.useFakeTimers()
+    const onDelete = vi.fn()
     render(<NumberKeyboard visible onDelete={onDelete} />)
     const del = screen.getByTitle('BACKSPACE')
     fireEvent.touchStart(del, { touches: [{}] })
-    jest.runOnlyPendingTimers()
+    vi.runOnlyPendingTimers()
     expect(onDelete).toBeCalledTimes(1)
-    jest.runOnlyPendingTimers()
+    vi.runOnlyPendingTimers()
     expect(onDelete).toBeCalledTimes(2)
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('render with multiple customKeys', () => {
-    const onInput = jest.fn()
+    const onInput = vi.fn()
     render(<NumberKeyboard customKey={['-', '.']} visible onInput={onInput} />)
     const left = screen.getByText('-')
     const right = screen.getByText('.')

@@ -11,7 +11,7 @@ function $$(className: string) {
   return document.body.querySelectorAll(className)
 }
 
-const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
 describe('Form', () => {
   afterEach(() => {
@@ -23,7 +23,7 @@ describe('Form', () => {
   })
 
   test('basic usage', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
 
     const { getByText, getByLabelText } = render(
       <Form
@@ -44,7 +44,7 @@ describe('Form', () => {
       </Form>
     )
 
-    console.error = jest.fn()
+    console.error = vi.fn()
 
     fireEvent.click(getByText('submit'))
     await waitFor(() => {
@@ -239,7 +239,7 @@ describe('Form', () => {
   })
 
   test('warningOnly validate', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { getByTestId } = render(
       <Form data-testid='form' onFinish={fn}>
         <Form.Item
@@ -272,7 +272,7 @@ describe('Form', () => {
 
   describe('Form.Item', () => {
     test('noStyle', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { container } = render(
         <Form>
           <Form.Item noStyle name='test'>
@@ -288,7 +288,7 @@ describe('Form', () => {
     })
 
     test('hidden', async () => {
-      const onChange = jest.fn()
+      const onChange = vi.fn()
       const { container } = render(
         <Form>
           <Form.Item hidden name='test'>

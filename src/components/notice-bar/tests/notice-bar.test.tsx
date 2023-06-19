@@ -24,7 +24,7 @@ describe('NoticeBar', () => {
   })
 
   test('can be close', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { getByTestId } = render(
       <NoticeBar content='notice' closeable data-testid='notice' onClose={fn} />
     )
@@ -97,7 +97,7 @@ describe('NoticeBar', () => {
   })
 
   test('can be click', () => {
-    const handleClick = jest.fn()
+    const handleClick = vi.fn()
     const { getByText } = render(
       <NoticeBar content='notice!' onClick={handleClick} />
     )

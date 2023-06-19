@@ -88,7 +88,7 @@ describe('Ellipsis', () => {
   })
 
   test('content click', () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
     const { getByTestId } = render(
       <Ellipsis
         content={content}

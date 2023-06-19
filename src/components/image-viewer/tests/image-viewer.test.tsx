@@ -8,9 +8,13 @@ import {
   userEvent,
   mockDrag,
   act,
+  sleep,
 } from 'testing'
 import ImageViewer, { MultiImageViewerRef } from '../index'
 import Button from '../../button'
+import * as ImageViewerSlide from '../slide'
+import * as originAhooks from 'ahooks'
+import * as originUseDragAndPinch from '../../../utils/use-drag-and-pinch'
 
 const classPrefix = `adm-image-viewer`
 
@@ -24,8 +28,8 @@ const demoImages = [
 const G = global as any
 
 // `@react-spring/web` with `skipAnimation` not work in test env. Strange
-jest.mock('../slide', () => {
-  const { Slide, ...rest } = jest.requireActual('../slide')
+vi.mock('../slide', async importOriginal => {
+  const { Slide, ...rest } = await importOriginal<typeof ImageViewerSlide>()
   return {
     ...rest,
     Slide: (props: any) => {
@@ -41,9 +45,9 @@ jest.mock('../slide', () => {
   }
 })
 
-jest.mock('ahooks', () => {
-  const origin = jest.requireActual('ahooks')
-  const { useState, useEffect } = jest.requireActual('react')
+vi.mock('ahooks', async importOriginal => {
+  const origin = await importOriginal<typeof originAhooks>()
+  const { useState, useEffect } = await vi.importActual<typeof React>('react')
 
   return {
     ...origin,
@@ -74,10 +78,10 @@ function triggerPinch(offset: [number, number]) {
   })
 }
 
-jest.mock('../../../utils/use-drag-and-pinch', () => {
-  const { useDragAndPinch } = jest.requireActual(
-    '../../../utils/use-drag-and-pinch'
-  )
+vi.mock('../../../utils/use-drag-and-pinch', async importOriginal => {
+  const { useDragAndPinch } = await importOriginal<
+    typeof originUseDragAndPinch
+  >()
   return {
     useDragAndPinch: (config: any, ...args: any[]) => {
       G.onPinch = config.onPinch
@@ -93,8 +97,6 @@ describe('ImageViewer', () => {
   })
 
   test('maxZoom support auto', async () => {
-    jest.useFakeTimers()
-
     render(<ImageViewer image={demoImages[0]} visible maxZoom='auto' />)
 
     // Pinch to zoom bigger
@@ -104,9 +106,7 @@ describe('ImageViewer', () => {
 
     expect(G.nextZoom).toEqual(10)
 
-    jest.clearAllTimers()
-    jest.useRealTimers()
-    jest.restoreAllMocks()
+    // vi.restoreAllMocks()
   })
 
   test('`ImageViewer.show/ImageViewer.clear` should be work', async () => {
@@ -204,7 +204,7 @@ describe('ImageViewer.Multi', () => {
     Object.defineProperty(window, 'innerWidth', {
       value: 300,
     })
-    const onIndexChange = jest.fn()
+    const onIndexChange = vi.fn()
 
     render(
       <button
@@ -221,17 +221,22 @@ describe('ImageViewer.Multi', () => {
     const slides = document.querySelectorAll(`.${classPrefix}-slides`)[0]
     expect(screen.getByText('1 / 4')).toBeInTheDocument()
 
-    mockDrag(slides, [
-      {
-        clientX: 300,
-      },
-      {
-        clientX: 200,
-      },
-      {
-        clientX: 100,
-      },
-    ])
+    mockDrag(
+      slides,
+      [
+        {
+          clientX: 300,
+        },
+        {
+          clientX: 200,
+        },
+        {
+          clientX: 100,
+        },
+      ],
+      1
+    )
+
     await waitFor(() => expect(onIndexChange).toBeCalledWith(1))
     expect(screen.getByText('2 / 4')).toBeInTheDocument()
   })

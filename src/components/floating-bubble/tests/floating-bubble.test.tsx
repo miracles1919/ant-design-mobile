@@ -5,7 +5,7 @@ import FloatingBubble from '..'
 const classPrefix = `adm-floating-bubble`
 
 function mockRect(el: Element, value: any) {
-  jest.spyOn(el, 'getBoundingClientRect').mockReturnValue(value)
+  vi.spyOn(el, 'getBoundingClientRect').mockReturnValue(value)
 }
 
 function mockBoundaryRect() {
@@ -38,7 +38,7 @@ function mockButtonRect(data: any = {}) {
 
 describe('FloatingBubble', () => {
   test('onClick should be called', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
     render(<FloatingBubble onClick={onClick} />)
     const btn = document.querySelectorAll(`.${classPrefix}-button`)[0]
     fireEvent.click(btn)

@@ -18,7 +18,7 @@ function mockPxTester(px: number) {
 
   tester.forEach(
     item =>
-      (item.getBoundingClientRect = jest.fn(
+      (item.getBoundingClientRect = vi.fn(
         () =>
           ({
             height: px,
@@ -128,7 +128,7 @@ describe('IndexBar', () => {
     const indexEls = document.querySelectorAll(`.${classPrefix}-sidebar-row`)
 
     // mock target
-    document.elementFromPoint = jest.fn().mockReturnValueOnce(indexEls[1])
+    document.elementFromPoint = vi.fn().mockReturnValueOnce(indexEls[1])
 
     fireEvent.touchStart(indexEls[1], { touches: [{ clientX: 0, clientY: 0 }] })
     fireEvent.touchMove(indexEls[1], { touches: [{ clientX: 0, clientY: 10 }] })
@@ -147,7 +147,7 @@ describe('IndexBar', () => {
   })
 
   test('warning when the children id not `IndexBar.Panel` components`', async () => {
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementationOnce(() => {})
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementationOnce(() => {})
 
     render(
       <IndexBar>
@@ -199,7 +199,7 @@ describe('IndexBar', () => {
 
     const indexEls = document.querySelectorAll(`.${classPrefix}-sidebar-row`)
     // mock target
-    document.elementFromPoint = jest.fn().mockReturnValueOnce(null)
+    document.elementFromPoint = vi.fn().mockReturnValueOnce(null)
     fireEvent.touchStart(indexEls[0], { touches: [{ clientX: 0, clientY: 0 }] })
     fireEvent.touchMove(indexEls[1], { touches: [{ clientX: 0, clientY: 10 }] })
 

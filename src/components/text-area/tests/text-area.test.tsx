@@ -21,7 +21,7 @@ describe('TextArea', () => {
   })
 
   test('should works with `value={null}`', async () => {
-    console.error = jest.fn()
+    console.error = vi.fn()
     const renderer = render(<TextArea value={null as any} />)
     expect(renderer.container).toMatchSnapshot()
     expect(renderer.container.getElementsByTagName('textarea').length).toBe(1)
@@ -81,7 +81,7 @@ describe('TextArea', () => {
   })
 
   test('should exceed maxLength when use IME', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { getByRole } = render(<TextArea maxLength={1} onChange={onChange} />)
     const textarea = getByRole('textbox')
     fireEvent.compositionStart(textarea)

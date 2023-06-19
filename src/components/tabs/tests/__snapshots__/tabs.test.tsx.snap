@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Tabs \`activeLineMode\` prop 1`] = `
+exports[`Tabs > \`activeLineMode\` prop 1`] = `
 <div>
   <div
     class="adm-tabs"
@@ -69,7 +69,7 @@ exports[`Tabs \`activeLineMode\` prop 1`] = `
 </div>
 `;
 
-exports[`Tabs \`activeLineMode\` prop 2`] = `
+exports[`Tabs > \`activeLineMode\` prop 2`] = `
 <div>
   <div
     class="adm-tabs"

@@ -9,7 +9,7 @@ function $$(className: string) {
   return document.querySelectorAll(className)
 }
 
-const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
 describe('Swiper', () => {
   const items = [1, 2, 3].map(item => (
@@ -62,18 +62,18 @@ describe('Swiper', () => {
   })
 
   test('auto play', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     render(<Swiper autoplay>{items}</Swiper>)
 
     // trigger once
     act(() => {
-      jest.runOnlyPendingTimers()
+      vi.runOnlyPendingTimers()
     })
 
     expect($$(`.${classPrefix}-track-inner`)[0]).toHaveStyle(
       'transform: translate3d(-100%,0,0)'
     )
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('loop', async () => {
@@ -102,7 +102,7 @@ describe('Swiper', () => {
   })
 
   test('auto play and loop', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     render(
       <Swiper autoplay loop>
         {items}
@@ -110,19 +110,19 @@ describe('Swiper', () => {
     )
 
     act(() => {
-      jest.runOnlyPendingTimers()
+      vi.runOnlyPendingTimers()
     })
     expect($$(`.${classPrefix}-slide`)[0]).toHaveStyle(
       'transform: translate3d(-100%,0,0)'
     )
 
     act(() => {
-      jest.runOnlyPendingTimers()
+      vi.runOnlyPendingTimers()
     })
     expect($$(`.${classPrefix}-slide`)[1]).toHaveStyle(
       'left: -100%; transform: translate3d(-100%,0,0)'
     )
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('`swipePrev` & `swipeNext`', () => {
@@ -160,7 +160,7 @@ describe('Swiper', () => {
   })
 
   test('`onIndexChange` should be called when use `swipeTo`', () => {
-    const onIndexChange = jest.fn()
+    const onIndexChange = vi.fn()
     const App = () => {
       const ref = useRef<SwiperRef>(null)
       return (
@@ -185,7 +185,7 @@ describe('Swiper', () => {
   })
 
   test('`onIndexChange` should not be called when use `swipeTo` equal value', () => {
-    const onIndexChange = jest.fn()
+    const onIndexChange = vi.fn()
     const App = () => {
       const ref = useRef<SwiperRef>(null)
       return (
@@ -255,7 +255,7 @@ describe('Swiper', () => {
   })
 
   test('warning when the children is not `Swiper.Item` components`', () => {
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
     render(
       <Swiper>
         <div />
@@ -267,7 +267,7 @@ describe('Swiper', () => {
   })
 
   test('warning when the children is empty', () => {
-    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
     render(<Swiper></Swiper>)
     expect(warnSpy).toHaveBeenCalledWith(
@@ -276,7 +276,7 @@ describe('Swiper', () => {
   })
 
   test('autoplay should be work when the length of item changes', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const App = () => {
       const [items, setItems] = useState(['1', '2'])
 
@@ -302,25 +302,25 @@ describe('Swiper', () => {
     fireEvent.click(screen.getByRole('button'))
 
     act(() => {
-      jest.runOnlyPendingTimers()
+      vi.runOnlyPendingTimers()
     })
     act(() => {
-      jest.runOnlyPendingTimers()
+      vi.runOnlyPendingTimers()
     })
     act(() => {
-      jest.runOnlyPendingTimers()
+      vi.runOnlyPendingTimers()
     })
     expect($$(`.${classPrefix}-track-inner`)[0]).toHaveStyle(
       'transform: translate3d(-200%,0,0)'
     )
 
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('stop propagation should be work', () => {
-    const onMouseDown = jest.fn()
-    const onMouseMove = jest.fn()
-    const onMouseUp = jest.fn()
+    const onMouseDown = vi.fn()
+    const onMouseMove = vi.fn()
+    const onMouseUp = vi.fn()
     render(
       <div
         onMouseDown={onMouseDown}

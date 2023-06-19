@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Calendar controlled mode 1`] = `
+exports[`Calendar > controlled mode 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -727,7 +727,7 @@ exports[`Calendar controlled mode 1`] = `
 </div>
 `;
 
-exports[`Calendar custom label 1`] = `
+exports[`Calendar > custom label 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -1480,7 +1480,7 @@ exports[`Calendar custom label 1`] = `
 </div>
 `;
 
-exports[`Calendar jump to a day 1`] = `
+exports[`Calendar > jump to a day 1`] = `
 <div>
   <button>
     jumpTo
@@ -2213,7 +2213,7 @@ exports[`Calendar jump to a day 1`] = `
 </div>
 `;
 
-exports[`Calendar jump to a day 2`] = `
+exports[`Calendar > jump to a day 2`] = `
 <div>
   <button>
     jumpTo
@@ -2946,7 +2946,7 @@ exports[`Calendar jump to a day 2`] = `
 </div>
 `;
 
-exports[`Calendar range mode 1`] = `
+exports[`Calendar > range mode 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -3673,7 +3673,7 @@ exports[`Calendar range mode 1`] = `
 </div>
 `;
 
-exports[`Calendar single mode 1`] = `
+exports[`Calendar > single mode 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -4400,7 +4400,7 @@ exports[`Calendar single mode 1`] = `
 </div>
 `;
 
-exports[`Calendar week start on Monday 1`] = `
+exports[`Calendar > week start on Monday 1`] = `
 <div>
   <div
     class="adm-calendar"

@@ -42,14 +42,14 @@ describe('Dialog', () => {
   })
 
   test('afterShow should be called', async () => {
-    const afterShow = jest.fn()
+    const afterShow = vi.fn()
     render(<DialogAlert afterShow={afterShow} />)
     fireEvent.click(screen.getByRole('button'))
     await waitFor(() => expect(afterShow).toBeCalled())
   })
 
   test('onConfirm should be called', async () => {
-    const onConfirm = jest.fn()
+    const onConfirm = vi.fn()
     render(<DialogAlert onConfirm={onConfirm} />)
     fireEvent.click(screen.getByRole('button', { name: 'btn' }))
     fireEvent.click(screen.getByRole('button', { name: '我知道了' }))
@@ -58,8 +58,8 @@ describe('Dialog', () => {
   })
 
   test('close on mask click', async () => {
-    const onClose = jest.fn()
-    const afterClose = jest.fn()
+    const onClose = vi.fn()
+    const afterClose = vi.fn()
     render(
       <DialogAlert closeOnMaskClick onClose={onClose} afterClose={afterClose} />
     )
@@ -92,7 +92,7 @@ describe('Dialog', () => {
   })
 
   test('wait for alert to complete', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     render(
       <button
         onClick={async () => {
@@ -115,7 +115,7 @@ describe('Dialog', () => {
   })
 
   test('wait for confirm to complete', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const Confirm = () => (
       <button
         onClick={async () => {
@@ -193,7 +193,7 @@ describe('Dialog', () => {
 
   test('action onClick', async () => {
     const promise = Promise.resolve()
-    const onClick = jest.fn(() => promise)
+    const onClick = vi.fn(() => promise)
     const actions = [
       {
         key: 'ok',

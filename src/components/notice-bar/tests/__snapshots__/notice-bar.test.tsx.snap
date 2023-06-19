@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NoticeBar long content 1`] = `
+exports[`NoticeBar > long content 1`] = `
 <div>
   <div
     class="adm-notice-bar adm-notice-bar-default"

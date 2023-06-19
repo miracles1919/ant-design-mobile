@@ -18,7 +18,7 @@ describe('Calendar', () => {
   })
 
   test('single mode', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { container, getByText } = render(
       <Calendar
         selectionMode='single'
@@ -35,7 +35,7 @@ describe('Calendar', () => {
   })
 
   test('range mode', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { container, getByText } = render(
       <Calendar selectionMode='range' defaultValue={rangeDate} onChange={fn} />
     )
@@ -81,7 +81,7 @@ describe('Calendar', () => {
   })
 
   test('page change', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     render(<Calendar selectionMode='single' onPageChange={fn} />)
 
     const btns = document.querySelectorAll(`.${classPrefix}-arrow-button-right`)

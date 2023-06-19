@@ -3,7 +3,7 @@ import { render, fireEvent, act, userEvent, waitFor, screen } from 'testing'
 import Input from '..'
 import { InputRef } from '../input'
 
-jest.mock('../../../utils/validate', () => ({
+vi.mock('../../../utils/validate', () => ({
   isIOS: function () {
     return true
   },
@@ -12,7 +12,7 @@ const classPrefix = `adm-input`
 
 describe('Input', () => {
   test('should works with `value={null}`', async () => {
-    console.error = jest.fn()
+    console.error = vi.fn()
     const renderer = render(<Input value={null as any} />)
     expect(renderer.container).toMatchSnapshot()
     expect(renderer.container.getElementsByTagName('input').length).toBe(1)
@@ -58,8 +58,8 @@ describe('Input', () => {
   })
 
   test('should works with composition', async () => {
-    const onCompositionStart = jest.fn()
-    const onCompositionEnd = jest.fn()
+    const onCompositionStart = vi.fn()
+    const onCompositionEnd = vi.fn()
     render(
       <Input
         clearable
@@ -149,7 +149,7 @@ describe('Input', () => {
   })
 
   test('should works with `onEnterPress`', async () => {
-    const onEnterPress = jest.fn()
+    const onEnterPress = vi.fn()
     render(<Input defaultValue={'testValue'} onEnterPress={onEnterPress} />)
     const input = screen.getByRole('textbox') as HTMLInputElement
     expect(input).toBeInTheDocument()
@@ -171,8 +171,8 @@ describe('Input', () => {
 
   test('should works useImperativeHandle', async () => {
     const ref = createRef<InputRef>()
-    const onFocus = jest.fn()
-    const onBlur = jest.fn()
+    const onFocus = vi.fn()
+    const onBlur = vi.fn()
     render(
       <Input
         defaultValue={'testValue'}

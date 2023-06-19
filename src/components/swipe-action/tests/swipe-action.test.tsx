@@ -209,7 +209,7 @@ describe('SwipeAction', () => {
   })
 
   test('onAction should not be called when swiping', async () => {
-    const onAction = jest.fn()
+    const onAction = vi.fn()
     const { getByTestId, getByText } = render(<App onAction={onAction} />)
 
     swipe(getByTestId('swipe'), [
@@ -223,7 +223,7 @@ describe('SwipeAction', () => {
   })
 
   test('onActionsReveal should be called when the ref.show is called', async () => {
-    const onActionsReveal = jest.fn()
+    const onActionsReveal = vi.fn()
     const App = () => {
       const ref = useRef<SwipeActionRef>(null)
       return (
@@ -249,7 +249,7 @@ describe('SwipeAction', () => {
   })
 
   test('onActionsReveal should be called when the operation button is revealed', async () => {
-    const onActionsReveal = jest.fn()
+    const onActionsReveal = vi.fn()
     const App = () => {
       return (
         <SwipeAction

@@ -61,7 +61,7 @@ describe('ActionSheet', () => {
   })
 
   test('renders Imperative', async () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
 
     function Imperative() {
       const handler = React.useRef<ActionSheetShowHandler>()
@@ -146,7 +146,7 @@ describe('ActionSheet', () => {
   })
 
   test('onAction shound be called', async () => {
-    const onAction = jest.fn()
+    const onAction = vi.fn()
 
     const { getByText } = render(<App onAction={onAction} visible />)
 
@@ -155,7 +155,7 @@ describe('ActionSheet', () => {
   })
 
   test('should close after clicking the option', async () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
     const { getByText, baseElement } = render(<App closeOnAction />)
 
     fireEvent.click(getByText('button'))
@@ -186,7 +186,7 @@ describe('ActionSheet', () => {
   })
 
   test('action click shound be called', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
     const actions: Action[] = [
       {
         text: '删除',
@@ -201,7 +201,7 @@ describe('ActionSheet', () => {
   })
 
   test('onMaskClick should be called', async () => {
-    const onMaskClick = jest.fn()
+    const onMaskClick = vi.fn()
     render(<App actions={actions} visible onMaskClick={onMaskClick} />)
     fireEvent.click(document.querySelectorAll(`.adm-mask-aria-button`)[0])
 
@@ -209,7 +209,7 @@ describe('ActionSheet', () => {
   })
 
   test('click cancel button should close', async () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
     const WithCancelButton = () => {
       const [visible, setVisible] = React.useState(false)
       return (

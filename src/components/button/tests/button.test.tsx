@@ -164,7 +164,7 @@ describe('Button', () => {
   })
 
   test('renders with async onClick and auto loading', async () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const { getByText } = render(
       <Button
         loading='auto'
@@ -182,12 +182,12 @@ describe('Button', () => {
       expect(screen.getByText('加载中')).toBeInTheDocument()
     })
     act(() => {
-      jest.runOnlyPendingTimers()
+      vi.runOnlyPendingTimers()
     })
     await waitFor(async () => {
       expect(screen.getByText('Button')).toBeInTheDocument()
     })
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('ref should work', async () => {
@@ -199,7 +199,7 @@ describe('Button', () => {
 
   test('renders with async onClick and auto loading when Promise reject', async () => {
     const error = new Error('mock request fail')
-    const mockFail = jest.fn().mockRejectedValue(error)
+    const mockFail = vi.fn().mockRejectedValue(error)
     const { getByText } = render(
       <Button
         loading='auto'

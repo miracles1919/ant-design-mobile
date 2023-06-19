@@ -29,12 +29,12 @@ function drag(element: Element, clientY: number) {
 
 describe('PullToRefresh', () => {
   const originWindowProto = Object.getPrototypeOf(window)
-  const getBoundingClientRectMock = jest.spyOn(
+  const getBoundingClientRectMock = vi.spyOn(
     HTMLElement.prototype,
     'getBoundingClientRect'
   )
   beforeAll(() => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     // window instanceof Window should be true
     Object.setPrototypeOf(window, Window.prototype)
     getBoundingClientRectMock.mockReturnValue({
@@ -43,7 +43,7 @@ describe('PullToRefresh', () => {
   })
 
   afterAll(() => {
-    jest.useRealTimers()
+    vi.useRealTimers()
     Object.setPrototypeOf(window, originWindowProto)
     getBoundingClientRectMock.mockRestore()
   })
@@ -95,19 +95,18 @@ describe('PullToRefresh', () => {
     expect(screen.getByText('加载中...')).toBeInTheDocument()
 
     await act(async () => {
-      jest.advanceTimersByTime(1000)
+      vi.advanceTimersByTime(1000)
     })
     expect(screen.getByText('刷新成功')).toBeInTheDocument()
 
     await act(async () => {
       // advance completeDelay (default 500ms)
-      jest.advanceTimersByTime(500)
+      vi.advanceTimersByTime(500)
     })
     expect(screen.getByText('下拉刷新')).toBeInTheDocument()
   })
 
   test('custom text should be correct', async () => {
-    jest.useFakeTimers()
     const statusRecord: Record<PullStatus, string> = {
       pulling: '用力拉',
       canRelease: '松开吧',
@@ -126,8 +125,12 @@ describe('PullToRefresh', () => {
       buttons: 1,
       clientY: 100,
     })
+
     expect(screen.getByText('用力拉')).toBeInTheDocument()
 
+    fireEvent.mouseDown(content, {
+      buttons: 1,
+    })
     fireEvent.mouseMove(content, {
       buttons: 1,
       clientY: 200,
@@ -138,13 +141,13 @@ describe('PullToRefresh', () => {
     expect(screen.getByText('玩命加载中...')).toBeInTheDocument()
 
     await act(async () => {
-      jest.advanceTimersByTime(1000)
+      vi.advanceTimersByTime(1000)
     })
     expect(screen.getByText('好啦')).toBeInTheDocument()
   })
 
   test('refresh should not work when status is complete', async () => {
-    const onRefresh = jest.fn()
+    const onRefresh = vi.fn()
     render(<App onRefresh={onRefresh} />)
     const content = $$(`.${classPrefix}-content`)[0]
     drag(content, 200)
@@ -162,8 +165,11 @@ describe('PullToRefresh', () => {
   })
 
   test('refresh should not work when scroll parent scrollY > 0', async () => {
-    window.scrollY = 10
-    const onRefresh = jest.fn()
+    const setScrollTop = (top: number) => {
+      'scrollTop' in window ? (window.scrollTop = top) : (window.scrollY = top)
+    }
+    setScrollTop(10)
+    const onRefresh = vi.fn()
     render(<App onRefresh={onRefresh} />)
     const content = $$(`.${classPrefix}-content`)[0]
     drag(content, 200)
@@ -171,7 +177,7 @@ describe('PullToRefresh', () => {
       Promise.resolve()
     })
     expect(onRefresh).not.toBeCalled()
-    window.scrollY = 0
+    setScrollTop(0)
   })
 
   test('refresh should not work when scroll parent scrollY > 0', async () => {
@@ -179,7 +185,7 @@ describe('PullToRefresh', () => {
     const content = $$(`.${classPrefix}-content`)[0]
     drag(content, 120)
     await act(async () => {
-      jest.advanceTimersByTime(1000)
+      vi.advanceTimersByTime(1000)
     })
     expect(screen.getByText('刷新成功')).toBeInTheDocument()
   })

@@ -16,8 +16,8 @@ test('renders with title', () => {
 })
 
 test('renders with event', async () => {
-  const onBodyClick = jest.fn()
-  const onHeaderClick = jest.fn()
+  const onBodyClick = vi.fn()
+  const onHeaderClick = vi.fn()
 
   const { getByText } = render(
     <Card

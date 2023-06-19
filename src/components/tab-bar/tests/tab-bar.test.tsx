@@ -49,7 +49,7 @@ describe('TabBar', () => {
   })
 
   test('basic usage', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { getByText } = render(
       <TabBar onChange={onChange} defaultActiveKey='personalCenter'>
         {tabs.map(item => (

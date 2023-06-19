@@ -25,7 +25,7 @@ describe('Footer', () => {
   })
 
   test('renders with links', () => {
-    const onLinkClick = jest.fn()
+    const onLinkClick = vi.fn()
     render(
       <Footer
         links={[
@@ -45,7 +45,7 @@ describe('Footer', () => {
   })
 
   test('renders with chips', () => {
-    const onChipClick = jest.fn()
+    const onChipClick = vi.fn()
     render(
       <Footer
         chips={[

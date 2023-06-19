@@ -83,7 +83,7 @@ describe('FloatingPanel', () => {
 
   test('height change', async () => {
     restoreMotion()
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { getByTestId } = render(<App onHeightChange={fn} />)
 
     const panelEl = getByTestId('panel')

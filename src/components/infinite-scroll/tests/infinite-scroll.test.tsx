@@ -15,7 +15,7 @@ export async function mockRequest() {
 }
 
 describe('InfiniteScroll', () => {
-  const getBoundingClientRectMock = jest.spyOn(
+  const getBoundingClientRectMock = vi.spyOn(
     HTMLElement.prototype,
     'getBoundingClientRect'
   )
@@ -35,11 +35,11 @@ describe('InfiniteScroll', () => {
       value: {},
     })
 
-    jest.useFakeTimers()
+    vi.useFakeTimers()
   })
 
   afterAll(() => {
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   const App = (props?: Partial<InfiniteScrollProps>) => {
@@ -77,13 +77,13 @@ describe('InfiniteScroll', () => {
     screen.findByText('加载中')
 
     await act(async () => {
-      jest.advanceTimersByTime(time)
+      vi.advanceTimersByTime(time)
     })
     await act(async () => {
-      jest.advanceTimersByTime(time)
+      vi.advanceTimersByTime(time)
     })
     await act(async () => {
-      jest.advanceTimersByTime(time)
+      vi.advanceTimersByTime(time)
     })
 
     // no more
@@ -105,13 +105,13 @@ describe('InfiniteScroll', () => {
     screen.findByText('Loading')
 
     await act(async () => {
-      jest.advanceTimersByTime(time)
+      vi.advanceTimersByTime(time)
     })
     await act(async () => {
-      jest.advanceTimersByTime(time)
+      vi.advanceTimersByTime(time)
     })
     await act(async () => {
-      jest.advanceTimersByTime(time)
+      vi.advanceTimersByTime(time)
     })
 
     expect(await screen.findByText('Baseline')).toBeInTheDocument()

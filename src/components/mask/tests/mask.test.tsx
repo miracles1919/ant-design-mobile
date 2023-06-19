@@ -16,7 +16,7 @@ describe('Mask', () => {
   })
 
   test('basic usage', async () => {
-    const afterShow = jest.fn()
+    const afterShow = vi.fn()
 
     const App = () => {
       const [visible, setVisible] = useState(false)
@@ -84,7 +84,7 @@ describe('Mask', () => {
   })
 
   test('afterClose should be called when close', async () => {
-    const afterClose = jest.fn()
+    const afterClose = vi.fn()
 
     const App = () => {
       const [visible, setVisible] = useState(true)

@@ -30,7 +30,7 @@ describe('adm-search-bar', () => {
   })
 
   test('show cancel button when `showCancelButton` is true and focused', () => {
-    const onCancel = jest.fn()
+    const onCancel = vi.fn()
     render(<SearchBar showCancelButton onCancel={onCancel} />)
     const input = screen.getByRole('searchbox')
     fireEvent.focus(input)
@@ -59,7 +59,7 @@ describe('adm-search-bar', () => {
   })
 
   test('onSearch should be called', async () => {
-    const onSearch = jest.fn()
+    const onSearch = vi.fn()
     render(<SearchBar onSearch={onSearch} />)
     const input = screen.getByRole('searchbox')
     await userEvent.type(input, '12{enter}')
@@ -68,8 +68,8 @@ describe('adm-search-bar', () => {
 
   test('ref', async () => {
     const ref = createRef<SearchBarRef>()
-    const onFocus = jest.fn()
-    const onBlur = jest.fn()
+    const onFocus = vi.fn()
+    const onBlur = vi.fn()
     render(<SearchBar ref={ref} onFocus={onFocus} onBlur={onBlur} />)
     const input = screen.getByRole('searchbox')
     expect(ref.current?.nativeElement).toBeDefined()

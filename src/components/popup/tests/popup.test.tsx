@@ -4,7 +4,7 @@ import Popup from '..'
 
 describe('Popup', () => {
   test('top swipe should be closed', () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
     render(
       <Popup visible onClose={onClose} position='top' closeOnSwipe>
         <div style={{ height: '400px', width: '400px' }}></div>
@@ -24,7 +24,7 @@ describe('Popup', () => {
   })
 
   test('bottom swipe should be closed', () => {
-    const onClose = jest.fn()
+    const onClose = vi.fn()
     render(
       <Popup visible onClose={onClose} position='bottom' closeOnSwipe>
         <div style={{ height: '400px', width: '400px' }}></div>

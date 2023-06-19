@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Form Form.Item hidden 1`] = `
+exports[`Form > Form.Item > hidden 1`] = `
 <div>
   <form
     class="adm-form"
@@ -53,7 +53,7 @@ exports[`Form Form.Item hidden 1`] = `
 </div>
 `;
 
-exports[`Form Form.Item noStyle 1`] = `
+exports[`Form > Form.Item > noStyle 1`] = `
 <div>
   <form
     class="adm-form"

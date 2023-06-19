@@ -137,7 +137,7 @@ const optionsMultiple = [
 ]
 
 describe('TreeSelect', () => {
-  const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+  const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
   afterAll(() => {
     warnSpy.mockRestore()
   })
@@ -199,7 +199,7 @@ describe('TreeSelect', () => {
   })
 
   test('renders with multiple', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     function MultipleBasic() {
       const [data, setData] = React.useState<string[]>()
       return (

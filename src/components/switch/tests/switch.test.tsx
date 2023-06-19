@@ -44,7 +44,7 @@ describe('Switch', () => {
   })
 
   test('`beforeChange` should not work with loading', async () => {
-    const beforeChange = jest.fn()
+    const beforeChange = vi.fn()
     render(<Switch loading beforeChange={beforeChange} />)
     const switchEl = screen.getByRole('switch')
     fireEvent.click(switchEl)
@@ -55,7 +55,7 @@ describe('Switch', () => {
   })
 
   test('`beforeChange` in async mode', async () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const App = () => {
       const beforeChange = (): Promise<void> => {
         return new Promise(resolve => {
@@ -71,15 +71,15 @@ describe('Switch', () => {
     const switchEl = screen.getByRole('switch')
     fireEvent.click(switchEl)
     expect(switchEl).toHaveClass(`${classPrefix}-disabled`)
-    jest.runAllTimers()
+    vi.runAllTimers()
     await waitFor(() => {
       expect(switchEl).toHaveClass(`${classPrefix}-checked`)
     })
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('`onChange` returns a Promise', async () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const App = () => {
       const [checked, setChecked] = useState(false)
       return (
@@ -98,9 +98,9 @@ describe('Switch', () => {
     fireEvent.click(switchEl)
     expect(switchEl).toHaveClass(`${classPrefix}-disabled`)
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     expect(switchEl).toHaveClass(`${classPrefix}-checked`)
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 })

@@ -74,10 +74,10 @@ describe('PasscodeInput', () => {
   })
 
   test('event callbacks should be called', async () => {
-    const onBlur = jest.fn()
-    const onChange = jest.fn()
-    const onFill = jest.fn()
-    const onFocus = jest.fn()
+    const onBlur = vi.fn()
+    const onChange = vi.fn()
+    const onFill = vi.fn()
+    const onFocus = vi.fn()
     render(
       <PasscodeInput
         length={4}

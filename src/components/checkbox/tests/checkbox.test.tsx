@@ -77,7 +77,7 @@ describe('Checkbox.Group', () => {
 
   test('value onChange', () => {
     let checked = ['apple', 'orange']
-    const onChange = jest.fn(value => {
+    const onChange = vi.fn(value => {
       checked = value
     })
 

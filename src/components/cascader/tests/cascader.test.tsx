@@ -9,8 +9,8 @@ describe('Cascader', () => {
   })
 
   test('basic usage', async () => {
-    const onConfirm = jest.fn()
-    const onTabsChange = jest.fn()
+    const onConfirm = vi.fn()
+    const onTabsChange = vi.fn()
     const App = () => {
       const [visible, setVisible] = useState(false)
 
@@ -53,7 +53,7 @@ describe('Cascader', () => {
   })
 
   test('use in an imperative way', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const onClick = async () => {
       const value = await Cascader.prompt({
         options,

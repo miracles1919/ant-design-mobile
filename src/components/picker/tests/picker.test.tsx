@@ -34,9 +34,9 @@ describe('Picker', () => {
   })
 
   test('test Picker render children with PickerActions and click cancel button', async () => {
-    const afterShow = jest.fn()
-    const afterClose = jest.fn()
-    const onCancel = jest.fn()
+    const afterShow = vi.fn()
+    const afterClose = vi.fn()
+    const onCancel = vi.fn()
     render(
       <Picker
         onCancel={onCancel}
@@ -73,7 +73,7 @@ describe('Picker', () => {
 
   test('test Picker onMaskClick', async () => {
     const maskClassPrefix = 'adm-mask'
-    const onCancel1 = jest.fn()
+    const onCancel1 = vi.fn()
     const PickerTestComponent1 = () => {
       const [visible, setVisible] = useState(false)
       return (
@@ -99,7 +99,7 @@ describe('Picker', () => {
     expect(onCancel1).toBeCalledTimes(1)
     unmount()
 
-    const onCancel2 = jest.fn()
+    const onCancel2 = vi.fn()
     const PickerTestComponent2 = () => {
       const [visible, setVisible] = useState(false)
       return (
@@ -126,8 +126,8 @@ describe('Picker', () => {
   })
 
   test('test imperative call', async () => {
-    const fn = jest.fn()
-    const onConfirm = jest.fn()
+    const fn = vi.fn()
+    const onConfirm = vi.fn()
     const onClick = async () => {
       const value = await Picker.prompt({
         onConfirm,
@@ -158,7 +158,7 @@ describe('Picker', () => {
 
   test('test Picker should work given ref', async () => {
     const ref = createRef<PickerRef>()
-    const afterShow = jest.fn()
+    const afterShow = vi.fn()
     render(
       <Picker
         columns={basicColumns}
@@ -174,7 +174,7 @@ describe('Picker', () => {
   })
 
   test('test Picker loading and loadingContent', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
 
     const Loading = () => {
       const [visible, setVisible] = useState(false)

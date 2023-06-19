@@ -144,7 +144,7 @@ describe('Toast', () => {
   })
 
   test('close automatically when timeout', async () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     const { getByText } = render(
       <button
         onClick={() => {
@@ -161,10 +161,11 @@ describe('Toast', () => {
     await waitForContentShow('toast')
     const mask = document.querySelectorAll('.adm-mask')[0]
     act(() => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
-    jest.useRealTimers()
+
     await waitForElementToBeRemoved(mask)
+    vi.useRealTimers()
   })
 
   test('manual clear', async () => {

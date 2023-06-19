@@ -9,7 +9,7 @@ const demoSrc =
 
 describe('Image', () => {
   test('onContainerClick can work', () => {
-    const onContainerClick = jest.fn()
+    const onContainerClick = vi.fn()
     const { getByTestId } = render(
       <Image
         src={demoSrc}
@@ -41,7 +41,7 @@ describe('Image', () => {
   test('lazy load should be work', () => {
     // mock useInViewport
     // https://github.com/alibaba/hooks/blob/master/packages/hooks/src/useInViewport/__tests__/index.test.ts
-    const mockIntersectionObserver = jest.fn().mockReturnValue({
+    const mockIntersectionObserver = vi.fn().mockReturnValue({
       observe: () => null,
       disconnect: () => null,
     })

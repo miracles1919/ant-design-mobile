@@ -40,7 +40,7 @@ describe('Slider', () => {
   })
 
   test('show ticks and set step', () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     render(<Slider ticks step={10} />)
     const thumb = screen.getByRole('slider')
     const track = $$(`.${classPrefix}-track`)[0]
@@ -51,12 +51,12 @@ describe('Slider', () => {
     )
 
     // reset dragLockRef
-    jest.runAllTimers()
+    vi.runAllTimers()
     fireEvent.click(track, { clientX: 60 })
     expect($$(`.${classPrefix}-tick`)[6]).toHaveClass(
       `${classPrefix}-tick-active`
     )
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('show marks', () => {
@@ -77,7 +77,7 @@ describe('Slider', () => {
   })
 
   test('max & min', () => {
-    const onAfterChange = jest.fn()
+    const onAfterChange = vi.fn()
     render(
       <Slider step={100} min={0} max={1000} onAfterChange={onAfterChange} />
     )
@@ -110,8 +110,8 @@ describe('Slider', () => {
   })
 
   test('double sliders', async () => {
-    jest.useFakeTimers()
-    const onAfterChange = jest.fn()
+    vi.useFakeTimers()
+    const onAfterChange = vi.fn()
     render(<Slider step={20} ticks range onAfterChange={onAfterChange} />)
     const thumb1 = screen.getAllByRole('slider')[0]
     const thumb2 = screen.getAllByRole('slider')[1]
@@ -121,11 +121,11 @@ describe('Slider', () => {
     drag(thumb1, 20)
     expect(onAfterChange).toHaveBeenLastCalledWith([20, 80])
 
-    jest.runAllTimers()
+    vi.runAllTimers()
     fireEvent.click(track, { clientX: 60 })
     fireEvent.click(track, { clientX: 5 })
     expect(onAfterChange).toHaveBeenLastCalledWith([0, 60])
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   test('show popover when swiping', () => {
@@ -179,7 +179,7 @@ describe('Slider', () => {
   })
 
   test('slide to max should be work', () => {
-    const onAfterChange = jest.fn()
+    const onAfterChange = vi.fn()
     render(<Slider onAfterChange={onAfterChange} />)
     drag(screen.getByRole('slider'), 100)
     expect(onAfterChange).toBeCalledWith(100)
@@ -193,7 +193,7 @@ describe('Slider', () => {
     })
 
     test('value should be formatted', () => {
-      const fn = jest.fn()
+      const fn = vi.fn()
       render(<Slider step={0.2} onChange={fn} />)
       const thumb = screen.getByRole('slider')
       drag(thumb, 10)
@@ -201,7 +201,7 @@ describe('Slider', () => {
     })
 
     test('value should be formatted when it is a double sliders', () => {
-      const fn = jest.fn()
+      const fn = vi.fn()
       render(<Slider step={0.2} onAfterChange={fn} range />)
       const thumb1 = screen.getAllByRole('slider')[0]
       const thumb2 = screen.getAllByRole('slider')[1]
@@ -211,7 +211,7 @@ describe('Slider', () => {
     })
 
     test('float accuracy', () => {
-      const fn = jest.fn()
+      const fn = vi.fn()
       render(<Slider step={1.2} onChange={fn} />)
       const thumb = screen.getByRole('slider')
       drag(thumb, 3)
@@ -220,7 +220,7 @@ describe('Slider', () => {
     })
 
     test('value is decimal', () => {
-      const fn = jest.fn()
+      const fn = vi.fn()
       render(<Slider min={1.5} max={9.5} onChange={fn} />)
       const thumb = screen.getByRole('slider')
       drag(thumb, 30)

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`WaterMark content watermark 1`] = `
+exports[`WaterMark > content watermark 1`] = `
 <div>
   <div
     class="adm-water-mark adm-water-mark-full-page"
@@ -9,7 +9,7 @@ exports[`WaterMark content watermark 1`] = `
 </div>
 `;
 
-exports[`WaterMark image watermark 1`] = `
+exports[`WaterMark > image watermark 1`] = `
 <div>
   <div
     class="adm-water-mark adm-water-mark-full-page"
@@ -18,7 +18,7 @@ exports[`WaterMark image watermark 1`] = `
 </div>
 `;
 
-exports[`WaterMark more rows content watermark 1`] = `
+exports[`WaterMark > more rows content watermark 1`] = `
 <div>
   <div
     class="adm-water-mark adm-water-mark-full-page"

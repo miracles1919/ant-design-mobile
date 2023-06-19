@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CascaderView basic usage 1`] = `
+exports[`CascaderView > basic usage 1`] = `
 <div>
   <div
     class="adm-cascader-view"
@@ -264,7 +264,7 @@ exports[`CascaderView basic usage 1`] = `
 </div>
 `;
 
-exports[`CascaderView basic usage 2`] = `
+exports[`CascaderView > basic usage 2`] = `
 <div>
   <div
     class="adm-cascader-view"
@@ -662,7 +662,7 @@ exports[`CascaderView basic usage 2`] = `
 </div>
 `;
 
-exports[`CascaderView basic usage 3`] = `
+exports[`CascaderView > basic usage 3`] = `
 <div>
   <div
     class="adm-cascader-view"
@@ -1098,7 +1098,7 @@ exports[`CascaderView basic usage 3`] = `
 </div>
 `;
 
-exports[`CascaderView controlled mode 1`] = `
+exports[`CascaderView > controlled mode 1`] = `
 <div>
   <div
     class="adm-cascader-view"
@@ -1534,7 +1534,7 @@ exports[`CascaderView controlled mode 1`] = `
 </div>
 `;
 
-exports[`CascaderView same value in options 1`] = `
+exports[`CascaderView > same value in options 1`] = `
 <div>
   <div
     class="adm-cascader-view"
@@ -1758,7 +1758,7 @@ exports[`CascaderView same value in options 1`] = `
 </div>
 `;
 
-exports[`CascaderView same value in options 2`] = `
+exports[`CascaderView > same value in options 2`] = `
 <div>
   <div
     class="adm-cascader-view"
@@ -2096,7 +2096,7 @@ exports[`CascaderView same value in options 2`] = `
 </div>
 `;
 
-exports[`CascaderView same value in options 3`] = `
+exports[`CascaderView > same value in options 3`] = `
 <div>
   <div
     class="adm-cascader-view"

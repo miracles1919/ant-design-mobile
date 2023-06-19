@@ -35,7 +35,7 @@ export async function mockUploadFail() {
   throw new Error('Fail to upload')
 }
 
-const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
 
 function mockInputFile(file: File | File[] = mockImg) {
   const inputEl = $$(`.${classPrefix}-input`)[0] as HTMLInputElement
@@ -44,24 +44,24 @@ function mockInputFile(file: File | File[] = mockImg) {
   return inputEl
 }
 
-const errSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
 describe('ImageUploader', () => {
   // jsdom does not support createObjectURL
-  URL.createObjectURL = jest.fn(() => '')
-  URL.revokeObjectURL = jest.fn(() => '')
+  URL.createObjectURL = vi.fn(() => '')
+  URL.revokeObjectURL = vi.fn(() => '')
 
   afterEach(() => {
     errSpy.mockReset()
   })
 
   beforeEach(() => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
   })
 
   afterAll(() => {
     errSpy.mockRestore()
-    jest.useRealTimers()
+    vi.useRealTimers()
   })
 
   const App = (props: any) => {
@@ -82,7 +82,7 @@ describe('ImageUploader', () => {
   }
 
   test('a11y', async () => {
-    jest.useRealTimers()
+    vi.useRealTimers()
     await testA11y(<App />)
   })
 
@@ -91,7 +91,7 @@ describe('ImageUploader', () => {
 
     const input = mockInputFile()
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     expect(input.files?.length ?? 0).toBe(0)
     expect($$(`.${classPrefix}-cell-image`).length).toBe(2)
@@ -107,7 +107,7 @@ describe('ImageUploader', () => {
     expect(container).toHaveTextContent('上传中...')
 
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     expect($$(`.${classPrefix}-cell-fail`)[0]).toBeVisible()
 
@@ -116,7 +116,7 @@ describe('ImageUploader', () => {
   })
 
   test('limit size', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     function beforeUpload(file: File) {
       if (file.size > 4) {
         fn('The file is too large!')
@@ -128,7 +128,7 @@ describe('ImageUploader', () => {
 
     const input = mockInputFile()
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
 
     expect(fn.mock.calls[0][0]).toContain('The file is too large!')
@@ -137,7 +137,7 @@ describe('ImageUploader', () => {
 
   test('limit count', async () => {
     const maxCount = 3
-    const fn = jest.fn()
+    const fn = vi.fn()
 
     render(
       <App
@@ -155,7 +155,7 @@ describe('ImageUploader', () => {
       new File(['three'], 'three.png', { type: 'image/png' }),
     ])
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
 
     expect(fn.mock.calls[0][0]).toBe(1)
@@ -201,7 +201,7 @@ describe('ImageUploader', () => {
     await user.upload(inputEl, files)
 
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
 
     expect($$(`.adm-image-img`).length).toBe(4)
@@ -211,7 +211,7 @@ describe('ImageUploader', () => {
   })
 
   test('delete image', async () => {
-    jest.useRealTimers()
+    vi.useRealTimers()
     render(
       <App
         multiple
@@ -252,7 +252,7 @@ describe('ImageUploader', () => {
   })
 
   test('`preview` & `onPreview` prop', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     render(<App preview={false} onPreview={fn} />)
     fireEvent.click($$('.adm-image-img')[0])
     expect(fn).toBeCalled()
@@ -296,18 +296,18 @@ describe('ImageUploader', () => {
     mockInputFile()
     // status pending
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     // status done
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
 
     expect($$(`.${classPrefix}-upload-button`)[0]).toBeInTheDocument()
   })
 
   test('auto remove failed task before upload when `showFailed` is false', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     render(
       <App
         upload={mockUploadFail}
@@ -317,26 +317,26 @@ describe('ImageUploader', () => {
     )
     mockInputFile()
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     expect(fn).toBeCalled()
     expect(fn.mock.lastCall[0].length).toBe(1)
 
     mockInputFile()
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     expect(fn.mock.lastCall[0].length).toBe(1)
   })
 
   test('revokeObjectURL when task done', async () => {
-    const fn = jest.fn(() => {})
+    const fn = vi.fn(() => {})
     URL.revokeObjectURL = fn
 
     render(<App />)
@@ -348,10 +348,10 @@ describe('ImageUploader', () => {
 
     mockInputFile()
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
 
     await waitFor(() => expect($$(`.${classPrefix}-cell-image`).length).toBe(1))
@@ -366,16 +366,16 @@ describe('ImageUploader', () => {
   })
 
   test('task change', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     render(<App upload={mockUpload} onUploadQueueChange={fn} />)
     mockInputFile()
     expect(fn.mock.lastCall[0]).toMatchObject([])
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     expect(fn.mock.lastCall[0]).toMatchObject([{ id: 0, status: 'pending' }])
     await act(async () => {
-      jest.runAllTimers()
+      vi.runAllTimers()
     })
     expect(fn).toBeCalledWith([{ id: 0, status: 'success' }])
     expect(fn.mock.lastCall[0]).toMatchObject([])

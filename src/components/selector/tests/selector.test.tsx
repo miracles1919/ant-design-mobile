@@ -11,7 +11,7 @@ describe('Selector', () => {
   })
 
   test('onChange should be work', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(<Selector options={options} onChange={onChange} />)
 
     const label = screen.getByText(options[1].label)
@@ -22,7 +22,7 @@ describe('Selector', () => {
   })
 
   test('disabled should be work', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(
       <Selector
         options={[

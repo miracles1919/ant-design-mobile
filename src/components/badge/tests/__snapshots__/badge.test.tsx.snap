@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Badge render with content 1`] = `
+exports[`Badge > render with content 1`] = `
 <div>
   <div
     class="adm-badge-wrapper"
@@ -19,7 +19,7 @@ exports[`Badge render with content 1`] = `
 </div>
 `;
 
-exports[`Badge render without content 1`] = `
+exports[`Badge > render without content 1`] = `
 <div
   class="adm-badge"
   data-testid="test-badge"
@@ -32,7 +32,7 @@ exports[`Badge render without content 1`] = `
 </div>
 `;
 
-exports[`Badge renders with color 1`] = `
+exports[`Badge > renders with color 1`] = `
 <div>
   <div
     class="adm-badge-wrapper"

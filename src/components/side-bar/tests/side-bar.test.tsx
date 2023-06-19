@@ -35,7 +35,7 @@ describe('TabBar', () => {
   })
 
   test('basic usage', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { getByText } = render(
       <SideBar onChange={onChange} defaultActiveKey='key2'>
         {tabs.map(item => (
@@ -71,7 +71,7 @@ describe('TabBar', () => {
   })
 
   test('disabled item', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { getByText } = render(
       <SideBar onChange={onChange}>
         {tabs.map(item => (

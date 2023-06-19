@@ -19,8 +19,8 @@ describe('CascaderView', () => {
   })
 
   test('basic usage', async () => {
-    const onChange = jest.fn()
-    const onTabsChange = jest.fn()
+    const onChange = vi.fn()
+    const onTabsChange = vi.fn()
     const { getByText, container } = render(
       <CascaderView
         options={options}

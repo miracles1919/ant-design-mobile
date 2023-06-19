@@ -85,7 +85,7 @@ test('renders with block', () => {
 })
 
 test('renders with onClick event', () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
   const { getByText } = render(<Space onClick={onClick}>Block</Space>)
   fireEvent.click(getByText('Block'))
   expect(onClick).toBeCalledTimes(1)

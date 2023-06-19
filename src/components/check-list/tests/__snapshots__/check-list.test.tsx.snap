@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CheckList renders with disabled 1`] = `
+exports[`CheckList > renders with disabled 1`] = `
 <div>
   <div
     class="adm-list adm-list-default adm-check-list"
@@ -57,7 +57,7 @@ exports[`CheckList renders with disabled 1`] = `
 </div>
 `;
 
-exports[`CheckList renders with readonly 1`] = `
+exports[`CheckList > renders with readonly 1`] = `
 <div>
   <div
     class="adm-list adm-list-default adm-check-list"

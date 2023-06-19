@@ -5,7 +5,7 @@ import Rate from '..'
 const classPrefix = `adm-rate`
 
 describe('Rate', () => {
-  const getBoundingClientRectMock = jest.spyOn(
+  const getBoundingClientRectMock = vi.spyOn(
     HTMLElement.prototype,
     'getBoundingClientRect'
   )
@@ -22,7 +22,7 @@ describe('Rate', () => {
   })
 
   test('readOnly should be work', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(<Rate value={4} readOnly onChange={onChange} />)
     const radioGroup = screen.getByRole('radiogroup')
     const radio = screen.getByRole('radio', { name: '1' })

@@ -23,7 +23,7 @@ describe('DatePicker', () => {
   })
 
   test('renders basic', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { getByText } = render(
       <DatePicker
         visible
@@ -42,7 +42,7 @@ describe('DatePicker', () => {
 
   test('defaultValue out of bound', async () => {
     const tomorrow = dayjs(now).add(1, 'day').toDate()
-    const fn = jest.fn()
+    const fn = vi.fn()
 
     const { getByText } = render(
       <DatePicker
@@ -63,7 +63,7 @@ describe('DatePicker', () => {
   })
 
   test('should pick today without defaultValue', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
 
     const { getByText } = render(
       <DatePicker
@@ -82,7 +82,7 @@ describe('DatePicker', () => {
   })
 
   test('precision minute', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { getByText } = render(
       <DatePicker
         visible
@@ -111,7 +111,7 @@ describe('DatePicker', () => {
 
   test('precision week', async () => {
     const today = new Date()
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { getByText } = render(
       <DatePicker
         visible
@@ -134,8 +134,8 @@ describe('DatePicker', () => {
 
   test('test imperative call', async () => {
     const today = new Date()
-    const fn = jest.fn()
-    const onConfirm = jest.fn()
+    const fn = vi.fn()
+    const onConfirm = vi.fn()
     const onClick = async () => {
       const value = await DatePicker.prompt({
         defaultValue: now,
@@ -165,7 +165,7 @@ describe('DatePicker', () => {
   })
 
   test('till now should be work', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     render(<DatePicker visible tillNow onConfirm={fn} />)
 
     const nowEl = await screen.findByText('至今')

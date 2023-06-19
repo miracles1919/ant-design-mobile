@@ -5,7 +5,7 @@ import { Stepper } from '../stepper'
 
 describe('stepper', () => {
   test('control works', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
 
     const Element = () => {
       const [value, setValue] = useState<number>(1)
@@ -41,7 +41,7 @@ describe('stepper', () => {
   })
 
   test('defaultValue works', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(<Stepper defaultValue={100} onChange={onChange} />)
 
     const input = screen.getByRole('spinbutton') as HTMLInputElement
@@ -64,7 +64,7 @@ describe('stepper', () => {
   })
 
   test('step works', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(<Stepper defaultValue={0} step={100} onChange={onChange} />)
 
     const minusButton = screen.getByRole('button', { name: '减少' })
@@ -86,7 +86,7 @@ describe('stepper', () => {
   })
 
   test('min and max works', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(
       <Stepper
         max={0.2}
@@ -121,7 +121,7 @@ describe('stepper', () => {
   })
 
   test('allowEmpty works', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(<Stepper defaultValue={100} allowEmpty onChange={onChange} />)
 
     const input = screen.getByRole('spinbutton')
@@ -135,7 +135,7 @@ describe('stepper', () => {
   })
 
   test('disabled works', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     render(<Stepper disabled onChange={onChange} />)
 
     const minusButton = screen.getByRole('button', { name: '减少' })
@@ -153,14 +153,14 @@ describe('stepper', () => {
   })
 
   test('inputReadOnly works', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { container } = render(<Stepper inputReadOnly onChange={onChange} />)
     expect(container.querySelector('input[readonly]')).not.toBeNull()
   })
 
   test('onFocus and onBlur works', () => {
-    const onBlur = jest.fn()
-    const onFocus = jest.fn()
+    const onBlur = vi.fn()
+    const onFocus = vi.fn()
     render(<Stepper onBlur={onBlur} onFocus={onFocus} />)
 
     const input = screen.getByRole('spinbutton')
@@ -212,8 +212,8 @@ describe('stepper', () => {
   })
 
   test('formatter & parser', () => {
-    const formatter = jest.fn((val?: number) => `$ ${val}`)
-    const parser = jest.fn((text: string) => parseFloat(text))
+    const formatter = vi.fn((val?: number) => `$ ${val}`)
+    const parser = vi.fn((text: string) => parseFloat(text))
 
     const { container } = render(
       <Stepper formatter={formatter} parser={parser} />
@@ -237,7 +237,7 @@ describe('stepper', () => {
   })
 
   test('stringMode', () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const { container } = render(
       <Stepper
         stringMode

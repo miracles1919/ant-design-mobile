@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ConfigProvider should display the text as da-DK 1`] = `
+exports[`ConfigProvider > should display the text as da-DK 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -1218,7 +1218,7 @@ exports[`ConfigProvider should display the text as da-DK 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as en 1`] = `
+exports[`ConfigProvider > should display the text as en 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -2436,7 +2436,7 @@ exports[`ConfigProvider should display the text as en 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as es 1`] = `
+exports[`ConfigProvider > should display the text as es 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -3654,7 +3654,7 @@ exports[`ConfigProvider should display the text as es 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as fa-IR 1`] = `
+exports[`ConfigProvider > should display the text as fa-IR 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -4872,7 +4872,7 @@ exports[`ConfigProvider should display the text as fa-IR 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as fr-FR 1`] = `
+exports[`ConfigProvider > should display the text as fr-FR 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -6090,7 +6090,7 @@ exports[`ConfigProvider should display the text as fr-FR 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as id-ID 1`] = `
+exports[`ConfigProvider > should display the text as id-ID 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -7308,7 +7308,7 @@ exports[`ConfigProvider should display the text as id-ID 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as it-IT 1`] = `
+exports[`ConfigProvider > should display the text as it-IT 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -8526,7 +8526,7 @@ exports[`ConfigProvider should display the text as it-IT 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as ja-JP 1`] = `
+exports[`ConfigProvider > should display the text as ja-JP 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -9744,7 +9744,7 @@ exports[`ConfigProvider should display the text as ja-JP 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as kk-KZ 1`] = `
+exports[`ConfigProvider > should display the text as kk-KZ 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -10962,7 +10962,7 @@ exports[`ConfigProvider should display the text as kk-KZ 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as ko-KR 1`] = `
+exports[`ConfigProvider > should display the text as ko-KR 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -12180,7 +12180,7 @@ exports[`ConfigProvider should display the text as ko-KR 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as nb-NO 1`] = `
+exports[`ConfigProvider > should display the text as nb-NO 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -13398,7 +13398,7 @@ exports[`ConfigProvider should display the text as nb-NO 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as nl-NL 1`] = `
+exports[`ConfigProvider > should display the text as nl-NL 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -14616,7 +14616,7 @@ exports[`ConfigProvider should display the text as nl-NL 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as zh-CH 1`] = `
+exports[`ConfigProvider > should display the text as zh-CH 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -15834,7 +15834,7 @@ exports[`ConfigProvider should display the text as zh-CH 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as zh-HK 1`] = `
+exports[`ConfigProvider > should display the text as zh-HK 1`] = `
 <div>
   <div
     class="adm-calendar"
@@ -17052,7 +17052,7 @@ exports[`ConfigProvider should display the text as zh-HK 1`] = `
 </div>
 `;
 
-exports[`ConfigProvider should display the text as zh-TW 1`] = `
+exports[`ConfigProvider > should display the text as zh-TW 1`] = `
 <div>
   <div
     class="adm-calendar"
