@@ -52,6 +52,7 @@ export const Slides = forwardRef<SlidesRef, SlidesType>((props, ref) => {
         const velocityOffset =
           Math.min(state.velocity[0] * 2000, slideWidth) * state.direction[0]
         console.log('offsetX', offsetX, velocityOffset, slideWidth)
+        console.log('velocityOffset', state.velocity[0], state.direction[0])
         swipeTo(
           bound(
             Math.round((offsetX + velocityOffset) / slideWidth),

@@ -100,17 +100,23 @@ describe('Swiper', () => {
     expect(container).toMatchSnapshot()
 
     const el = $$(`.${classPrefix}-track`)[0]
-    mockDrag(el, [
-      { clientX: 300, clientY: 0 },
-      {
-        clientX: 200,
-        clientY: 25,
-      },
-      {
-        clientX: 100,
-        clientY: 30,
-      },
-    ])
+    await act(async () => {
+      await mockDrag(
+        el,
+        [
+          { clientX: 300, clientY: 0 },
+          {
+            clientX: 200,
+            clientY: 25,
+          },
+          {
+            clientX: 100,
+            clientY: 30,
+          },
+        ],
+        5
+      )
+    })
 
     expect(container).toMatchSnapshot()
   })
