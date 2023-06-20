@@ -235,11 +235,10 @@ describe('ImageViewer.Multi', () => {
             clientX: 100,
           },
         ],
-        5
+        10
       )
     })
 
-    await sleep(10)
     screen.debug()
     expect(onIndexChange).toBeCalledWith(1)
     expect(screen.getByText('2 / 4')).toBeInTheDocument()
