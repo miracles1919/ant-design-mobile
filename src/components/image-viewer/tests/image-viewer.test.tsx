@@ -221,23 +221,27 @@ describe('ImageViewer.Multi', () => {
     const slides = document.querySelectorAll(`.${classPrefix}-slides`)[0]
     expect(screen.getByText('1 / 4')).toBeInTheDocument()
 
-    mockDrag(
-      slides,
-      [
-        {
-          clientX: 300,
-        },
-        {
-          clientX: 200,
-        },
-        {
-          clientX: 100,
-        },
-      ],
-      1
-    )
+    await act(async () => {
+      await mockDrag(
+        slides,
+        [
+          {
+            clientX: 300,
+          },
+          {
+            clientX: 200,
+          },
+          {
+            clientX: 100,
+          },
+        ],
+        5
+      )
+    })
 
-    await waitFor(() => expect(onIndexChange).toBeCalledWith(1))
+    await sleep(10)
+    screen.debug()
+    expect(onIndexChange).toBeCalledWith(1)
     expect(screen.getByText('2 / 4')).toBeInTheDocument()
   })
 })

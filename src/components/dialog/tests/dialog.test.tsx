@@ -6,6 +6,8 @@ import {
   waitFor,
   waitForElementToBeRemoved,
   screen,
+  sleep,
+  userEvent,
 } from 'testing'
 import Dialog, { DialogAlertProps } from '..'
 import { act } from '@testing-library/react'
@@ -131,20 +133,14 @@ describe('Dialog', () => {
 
     render(<Confirm />)
     const btn = screen.getByRole('button', { name: 'btn' })
-    fireEvent.click(btn)
-    const dialog = screen.getByRole('dialog')
-    fireEvent.click(screen.getByRole('button', { name: '确定' }))
-    await act(async () => {
-      await Promise.resolve()
-    })
-    expect(fn.mock.calls[0][0]).toBe(true)
-    await waitForElementToBeRemoved(dialog)
 
     fireEvent.click(btn)
-    fireEvent.click(screen.getByRole('button', { name: '取消' }))
-    await act(async () => {
-      await Promise.resolve()
-    })
+    await userEvent.click(screen.getByRole('button', { name: '确定' }))
+    expect(fn.mock.calls[0][0]).toBe(true)
+    await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull())
+
+    fireEvent.click(btn)
+    await userEvent.click(screen.getByRole('button', { name: '取消' }))
     expect(fn.mock.calls[1][0]).toBe(false)
   })
 

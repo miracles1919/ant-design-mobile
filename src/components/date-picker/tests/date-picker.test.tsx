@@ -19,7 +19,7 @@ const now = new Date()
 
 describe('DatePicker', () => {
   test('passes a11y test', async () => {
-    await waitFor(() => testA11y(<DatePicker />))
+    await testA11y(<DatePicker />)
   })
 
   test('renders basic', async () => {
@@ -170,11 +170,9 @@ describe('DatePicker', () => {
 
     const nowEl = await screen.findByText('至今')
     fireEvent.click(nowEl)
+
     await act(async () => {
-      await Promise.resolve()
-    })
-    await act(async () => {
-      await Promise.resolve()
+      await sleep(10)
     })
 
     fireEvent.click(screen.getByText('确定'))

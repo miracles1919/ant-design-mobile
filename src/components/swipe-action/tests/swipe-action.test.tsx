@@ -89,7 +89,7 @@ describe('SwipeAction', () => {
         </SwipeAction>
       )
     }
-    const { getByTestId, getByText } = render(<App />)
+    const { getByTestId, getByText, findByText } = render(<App />)
     swipe(getByTestId('swipe'), [
       {
         clientX: 50,
@@ -102,7 +102,7 @@ describe('SwipeAction', () => {
     )
 
     fireEvent.click(getByText('delete'))
-    fireEvent.click(getByText('确定'))
+    await userEvent.click(await findByText('确定'))
     await waitFor(() => expect(track).toHaveStyle(`transform: none`))
   })
 

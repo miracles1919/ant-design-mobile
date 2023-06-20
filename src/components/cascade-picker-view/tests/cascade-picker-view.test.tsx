@@ -7,7 +7,7 @@ const classPrefix = `adm-picker-view`
 
 describe('CascadePickerView', () => {
   test('a11y', async () => {
-    await waitFor(() => testA11y(<CascadePickerView options={options} />))
+    await testA11y(<CascadePickerView options={options} />)
   })
 
   test('controlled mode', async () => {

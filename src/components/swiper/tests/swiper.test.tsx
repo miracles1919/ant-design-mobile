@@ -1,5 +1,13 @@
 import React, { useRef, useState } from 'react'
-import { render, testA11y, fireEvent, screen, mockDrag } from 'testing'
+import {
+  render,
+  testA11y,
+  fireEvent,
+  screen,
+  mockDrag,
+  waitFor,
+  sleep,
+} from 'testing'
 import Swiper, { SwiperRef } from '..'
 import { act } from '@testing-library/react'
 
@@ -41,17 +49,23 @@ describe('Swiper', () => {
     const el = $$(`.${classPrefix}-track`)[0]
 
     // swipe to item 2
-    mockDrag(el, [
-      { clientX: 300, clientY: 0 },
-      {
-        clientX: 200,
-        clientY: 25,
-      },
-      {
-        clientX: 100,
-        clientY: 30,
-      },
-    ])
+    await act(async () => {
+      await mockDrag(
+        el,
+        [
+          { clientX: 300, clientY: 0 },
+          {
+            clientX: 200,
+            clientY: 25,
+          },
+          {
+            clientX: 100,
+            clientY: 30,
+          },
+        ],
+        5
+      )
+    })
 
     expect($$(`.${classPrefix}-track-inner`)[0]).toHaveStyle(
       'transform: translate3d(-100%,0,0)'
@@ -237,17 +251,24 @@ describe('Swiper', () => {
     )
 
     const el = $$(`.${classPrefix}-track`)[0]
-    mockDrag(el, [
-      { clientX: 50, clientY: 300 },
-      {
-        clientX: 50,
-        clientY: 200,
-      },
-      {
-        clientX: 60,
-        clientY: 50,
-      },
-    ])
+
+    await act(async () => {
+      await mockDrag(
+        el,
+        [
+          { clientX: 50, clientY: 220 },
+          {
+            clientX: 50,
+            clientY: 200,
+          },
+          {
+            clientX: 60,
+            clientY: 100,
+          },
+        ],
+        5
+      )
+    })
 
     expect($$(`.${classPrefix}-track-inner`)[0]).toHaveStyle(
       'transform: translate3d(0,-100%,0)'

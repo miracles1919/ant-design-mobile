@@ -29,6 +29,7 @@ export const Slides = forwardRef<SlidesRef, SlidesType>((props, ref) => {
 
   function swipeTo(index: number, immediate = false) {
     const i = bound(index, 0, count - 1)
+    console.log('i', i, index, count - 1)
     props.onIndexChange?.(i)
     api.start({
       x: i * slideWidth,

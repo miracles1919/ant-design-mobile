@@ -1,12 +1,17 @@
 import * as React from 'react'
-import { render, testA11y, fireEvent, waitFor, cleanup, sleep } from 'testing'
+import {
+  render,
+  testA11y,
+  fireEvent,
+  waitFor,
+  cleanup,
+  screen,
+  act,
+  sleep,
+} from 'testing'
 import ActionSheet, { Action } from '../'
 import Button from '../../button'
 import type { ActionSheetProps, ActionSheetShowHandler } from '..'
-import {
-  reduceMotion,
-  restoreMotion,
-} from '../../../utils/reduce-and-restore-motion'
 
 const classPrefix = `adm-action-sheet`
 
@@ -39,25 +44,22 @@ describe('ActionSheet', () => {
   })
 
   test('basic usage', async () => {
-    restoreMotion()
+    vi.useFakeTimers()
     const { getByText, baseElement } = render(
       <App extra='请选择你要进行的操作' cancelText='取消' />
     )
     fireEvent.click(getByText('button'))
 
-    await waitFor(() =>
-      expect(baseElement.querySelectorAll(`.${classPrefix}`)[0]).toBeVisible()
-    )
+    act(() => {
+      vi.runAllTimers()
+    })
 
-    await waitFor(() =>
-      // end of animation
-      expect(baseElement.querySelectorAll('.adm-popup-body')[0]).toHaveStyle(
-        'transform: translate(0, 0%);'
-      )
+    expect(baseElement.querySelectorAll(`.${classPrefix}`)[0]).toBeVisible()
+    expect(baseElement.querySelectorAll('.adm-popup-body')[0]).toHaveStyle(
+      'transform: translate(0, 0%);'
     )
-
     expect(baseElement).toMatchSnapshot()
-    reduceMotion()
+    vi.useRealTimers()
   })
 
   test('renders Imperative', async () => {
@@ -96,16 +98,14 @@ describe('ActionSheet', () => {
 
     const { getByText, baseElement } = render(<Imperative />)
     fireEvent.click(getByText('显示'))
-    await waitFor(() => {
-      expect(baseElement.querySelectorAll(`.${classPrefix}`)[0]).toBeVisible()
-    })
+    expect(baseElement.querySelectorAll(`.${classPrefix}`)[0]).toBeVisible()
 
     fireEvent.click(getByText('修改'))
-
-    await waitFor(() => {
-      expect(onClose).toBeCalled()
-      expect(baseElement.querySelectorAll(`.${classPrefix}`).length).toBe(0)
+    await act(async () => {
+      await sleep(10)
     })
+    expect(onClose).toBeCalled()
+    expect(baseElement.querySelectorAll(`.${classPrefix}`).length).toBe(0)
   })
 
   test('rendered to the current node', async () => {

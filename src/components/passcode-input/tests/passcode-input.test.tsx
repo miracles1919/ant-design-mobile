@@ -16,6 +16,15 @@ function mockClick(el: HTMLElement) {
 }
 
 describe('PasscodeInput', () => {
+  const originScrollIntoView = window.HTMLElement.prototype.scrollIntoView
+  beforeAll(() => {
+    window.HTMLElement.prototype.scrollIntoView = vi.fn()
+  })
+
+  afterAll(() => {
+    window.HTMLElement.prototype.scrollIntoView = originScrollIntoView
+  })
+
   test('basic usage', () => {
     render(<PasscodeInput keyboard={<NumberKeyboard />} />)
     const input = screen.getByRole('button', { name: '密码输入框' })
